@@ -17,14 +17,22 @@ jobs:
       - run: dotnet run --project tools/VerifyDraw/VerifyDraw.csproj -- examples/verification-example.json 76F7E83B282AF1878A66AF9975751E7A58299A39BE0263872EFAFA8524BAF80B 6F90156448533E638007F635DC9429137B037986BDF99D88359F7CDFB82AE662
       - name: Reject incorrect club fingerprints
         run: |
-          if dotnet run --no-build --project tools/VerifyDraw/VerifyDraw.csproj -- examples/verification-example.json wrong wrong; then
-            echo 'A fingerprint mismatch was not rejected.'
+          set +e
+          dotnet run --no-build --project tools/VerifyDraw/VerifyDraw.csproj -- examples/verification-example.json wrong wrong
+          result=$?
+          set -e
+          if [ "$result" -ne 1 ]; then
+            echo "Expected mismatch exit code 1; got $result."
             exit 1
           fi
       - name: Reject a modified winner
         run: |
           python3 -c 'import json; d=json.load(open("examples/verification-example.json")); d["winners"][0]["ticketNumber"]=2; json.dump(d,open("/tmp/tombaro-altered-proof.json","w"))'
-          if dotnet run --no-build --project tools/VerifyDraw/VerifyDraw.csproj -- /tmp/tombaro-altered-proof.json; then
-            echo 'An altered winner was not rejected.'
+          set +e
+          dotnet run --no-build --project tools/VerifyDraw/VerifyDraw.csproj -- /tmp/tombaro-altered-proof.json
+          result=$?
+          set -e
+          if [ "$result" -ne 1 ]; then
+            echo "Expected mismatch exit code 1; got $result."
             exit 1
           fi
