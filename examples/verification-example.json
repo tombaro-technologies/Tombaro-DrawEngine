@@ -1,0 +1,10 @@
+{
+  "eventCode": "example",
+  "eventTitle": "Fictional example",
+  "snapshotJson": "{\"formatVersion\":1,\"raffleId\":\"11111111-1111-1111-1111-111111111111\",\"salesClosedUtc\":\"2026-10-29T18:00:00.0000000Z\",\"algorithmVersion\":\"1\",\"nonceCommitment\":\"D53EDA7A637C99CC7FB566D96E9FA109BF15C478410A3F5EB4D4C4E26CD081F6\",\"winnerCount\":2,\"ticketNumbers\":[1,2,10]}",
+  "snapshotFingerprint": "6F90156448533E638007F635DC9429137B037986BDF99D88359F7CDFB82AE662",
+  "commitmentFingerprint": "76F7E83B282AF1878A66AF9975751E7A58299A39BE0263872EFAFA8524BAF80B",
+  "drawNonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+  "drawInputHash": "6469F6C717AAE44925C3BB01ABD35490A917D3A545381025DC8401071D1174ED",
+  "winners": [{ "position": 1, "ticketNumber": 10 }, { "position": 2, "ticketNumber": 1 }]
+}

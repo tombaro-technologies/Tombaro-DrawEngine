@@ -1,0 +1,10 @@
+**/bin/
+**/obj/
+TestResults/
+.vs/
+*.user
+*.suo
+*.pfx
+*.p12
+*.pem
+*.key
